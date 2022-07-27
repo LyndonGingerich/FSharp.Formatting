@@ -263,3 +263,7 @@ let ``manual markdown test: blockquote without continuation`` () =
 "
 
     (Markdown.ToHtml(markdown)) |> should equal html
+
+[<Test>]
+let ``underscores within a word are not interpreted as italic delimiters`` () =
+    "foo_bar_baz" |> Markdown.ToHtml |> should not' (contain "<em>")
